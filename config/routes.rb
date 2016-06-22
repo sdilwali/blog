@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  get '/about' => 'pages#about' 
+  
   resources :posts
   root 'pages#home'
 
