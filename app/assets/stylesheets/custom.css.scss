@@ -4,7 +4,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-body.bg-body
+// gradient
+
+body.bodybackground
 {
     background: #a80077; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #a80077 , #66ff00); /* Chrome 10-25, Safari 5.1-6 */
