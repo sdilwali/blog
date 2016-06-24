@@ -3,52 +3,36 @@
 <head>
   <title>Dev Match</title>
   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <%= csrf_meta_tags %>
-  
-  <style>
-    
-
-
-/*gradient*/
-body.bodybackground
-{
-    background: #a80077; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #a80077 , #66ff00); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #a80077 , #66ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        
-}
-  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
-<body class="bg-body">
-
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span type="button" class="navbar-brand" aria-label="Left Align">
-        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-      </span>
-      <span type="button" class="navbar-brand" aria-label="Left Align">
-        <span class="fa fa-bar-chart-o" aria-hidden="true"></span>
-      </span>
-      <%= link_to 'Dev Match', root_path, class:"navbar-brand" %>
-     
-    </div>
-    <div class="collapse navbar-collapse" id="main-nav-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "About", about_path %></li>
-      </ul>
-    </div>
-  </div><!-- /.container-fluid -->
-</nav>
+<body>
+  
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span type="button" class="navbar-brand" aria-label="Left Align">
+          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+        </span>
+        <span type="button" class="navbar-brand" aria-label="Left Align">
+          <span class="fa fa-bar-chart-o" aria-hidden="true"></span>
+        </span>
+        <%= link_to 'Dev Match', root_path, class:"navbar-brand" %>
+       
+      </div>
+      <div class="collapse navbar-collapse" id="main-nav-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
 
   <div class="container">
     <%= yield %>
