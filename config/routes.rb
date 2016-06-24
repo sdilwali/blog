@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  # Generating a few routes... but all routes must be defined
+  resources :contacts
   
   get '/about' => 'pages#about' 
+  
+  
   
   resources :posts
   root 'pages#home'
