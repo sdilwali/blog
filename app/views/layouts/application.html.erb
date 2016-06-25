@@ -36,6 +36,13 @@
   </nav>
 
   <div class="container">
+    <!-- flash for error messages -->
+    <div class="col-md-4 col-md-offset-4">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class:"alert alert-#{key}" %>
+      <% end %>
+    </div>
+    
     <%= yield %>
   </div>
 
