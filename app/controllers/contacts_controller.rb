@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
             flash[:success] =  "Contact created successfully!"
             redirect_to new_contact_path
         else
-            flash[:warning] =  "Error, contact not created!"
+            flash[:danger] =  "Error, contact not created!"
             redirect_to new_contact_path
         end
         
