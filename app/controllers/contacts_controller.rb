@@ -8,6 +8,15 @@ class ContactsController < ApplicationController
         @contact = Contact.new(contact_params)
         
         if @contact.save
+            
+            #get values from param to setup the email
+            name = params[:contact][:name]
+            email = params[:contact][:email]
+            body = params[:contact][:comments]
+            
+            # send the email
+            ContactMailer.contact_email(name, email, body).deliver
+            
             flash[:success] =  "Contact created successfully!"
             redirect_to new_contact_path
         else
