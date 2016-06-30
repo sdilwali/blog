@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {registrations: 'users/registrations'
+  devise_for :users, controllers: {registrations: 'users/registrations' }
   # Generating a few routes... but all routes must be defined
   resources :contacts
   get '/about' => 'pages#about' 
-  
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
