@@ -1,6 +1,10 @@
 <h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: 'basic_form'}) do |f| %>
 <%= devise_error_messages! %>
+    
+    <!-- Hidden tag to track planID from Query string -->
+    <%= hidden_field_tag 'plan', params[:plan] %>
+
     <div class="field form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class:'form-control' %>
