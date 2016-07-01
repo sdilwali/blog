@@ -4,11 +4,57 @@
   <title>Dev Match</title>
   <!-- Latest compiled and minified CSS -->
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag "https://js.stripe.com/v2", type: 'text/javascript' %>
-  <%= javascript_include_tag %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
   <%= csrf_meta_tags %>
+  
+  
+  <script type='text/javascript'>
+  $(document).ready(function() {
+  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+  // Watch for a form submission:
+  $("#form-submit-btn").click(function(event) {
+    event.preventDefault();
+    $('input[type=submit]').prop('disabled', true);
+    var error = false;
+    var ccNum = $('#card_number').val(),
+        cvcNum = $('#card_code').val(),
+        expMonth = $('#card_month').val(),
+        expYear = $('#card_year').val();
+
+    if (!error) {
+      // Get the Stripe token:
+      Stripe.createToken({
+        number: ccNum,
+        cvc: cvcNum,
+        exp_month: expMonth,
+        exp_year: expYear
+      }, stripeResponseHandler);
+    }
+    return false;
+  }); // form submission
+  
+  function stripeResponseHandler(status, response) {
+    // Get a reference to the form:
+    var f = $("#new_user");
+
+    // Get the token from the response:
+    var token = response.id;
+
+    // Add the token to the form:
+    f.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
+
+    // Submit the form:
+    f.get(0).submit(); 
+  }
+});
+
+    
+    
+    
+  </script>
 </head>
 <body>
   
@@ -55,6 +101,7 @@
         <%= content_tag :div, value, class:"alert alert-#{key}" %>
       <% end %>
     </div>
+    <div class="payment-errors alert-danger"></div>
     
     <%= yield %>
   </div>
